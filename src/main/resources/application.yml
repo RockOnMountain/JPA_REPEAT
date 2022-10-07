@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpaRepeat
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        # show_sql: true -> ???? sout?? ??
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug # ???? ??? ?? (debug ??? ??)
+        type:
+          descriptor:
+            sql: trace # ???? ???? ????? ??? ? ??? trace? ???? ? ? ??.
+
+# ????: https://zzang9ha.tistory.com/399
