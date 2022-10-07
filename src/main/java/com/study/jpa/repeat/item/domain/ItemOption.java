@@ -14,20 +14,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-@Table(name = "category_item")
+@Table(name = "item_option")
 @Entity
-public class CategoryItem extends BaseEntity {
+public class ItemOption extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "category_item_id")
+    @Column(name = "item_option_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private String name;
+    private int price;
+    private int stockQuantity;
 
 }
