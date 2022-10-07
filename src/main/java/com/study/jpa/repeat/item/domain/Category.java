@@ -42,6 +42,7 @@ public class Category {
     private List<Category> children = new ArrayList<>();
 
 
+    // 연관관계 메소드
     public void addChildCategory(Category child) {
         this.children.add(child);
         child.setParent(this);
