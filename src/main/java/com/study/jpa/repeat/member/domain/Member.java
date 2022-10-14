@@ -12,10 +12,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import com.study.jpa.repeat.order.domain.Order;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "member_base")
 @Entity
 public class Member extends BaseEntity {
