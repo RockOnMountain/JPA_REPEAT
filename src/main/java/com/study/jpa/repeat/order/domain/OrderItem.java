@@ -2,6 +2,7 @@ package com.study.jpa.repeat.order.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,13 @@ public class OrderItem extends BaseEntity {
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @OneToMany(mappedBy = "orderItem")
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL)
     private List<OrderOption> orderOptions = new ArrayList<>();
+
+    // 연관관계 메소드
+    public void addOrderOption(OrderOption orderOption) {
+        this.orderOptions.add(orderOption);
+        orderOption.setOrderItem(this);
+    }
 
 }
