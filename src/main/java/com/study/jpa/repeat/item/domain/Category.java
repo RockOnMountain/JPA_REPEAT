@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import lombok.Getter;
@@ -18,12 +19,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@SequenceGenerator(name = "category_seq_gen", sequenceName = "category_seq")
 @Table(name = "category")
 @Entity
 public class Category extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq_gen")
     @Column(name = "category_id")
     private Long id;
 

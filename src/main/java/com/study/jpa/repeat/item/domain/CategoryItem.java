@@ -8,12 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@SequenceGenerator(name = "category_item_seq_gen", sequenceName = "category_item_seq")
 @Table(name = "category_item")
 @Entity
 public class CategoryItem extends BaseEntity {

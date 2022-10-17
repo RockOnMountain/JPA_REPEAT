@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 import com.study.jpa.repeat.item.domain.Item;
 import com.study.jpa.repeat.item.domain.ItemOption;
-import org.assertj.core.api.Assertions;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class ItemRepositoryTest {
 
         itemOption.setPrice(random.nextInt(1000) + 1000);
         itemOption.setStockQuantity(100);
-        itemOption.setName(name + " 옵션" + index);
+        itemOption.setName(name + " 옵션" + (index + 1));
 
         return itemOption;
     }

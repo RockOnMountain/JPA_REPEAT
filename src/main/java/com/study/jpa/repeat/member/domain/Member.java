@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import com.study.jpa.repeat.order.domain.Order;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SequenceGenerator(name = "member_seq_gen", sequenceName = "member_seq")
 @Table(name = "member_base")
 @Entity
 public class Member extends BaseEntity {
@@ -31,7 +33,7 @@ public class Member extends BaseEntity {
         GenerationType.IDENTITY : MySql
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_gen")
     @Column(name = "member_id")
     private Long id;
 

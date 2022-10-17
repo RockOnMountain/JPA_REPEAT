@@ -8,17 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@SequenceGenerator(name = "item_option_seq_gen", sequenceName = "item_option_seq")
 @Table(name = "item_option")
 @Entity
 public class ItemOption extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_option_seq_gen")
     @Column(name = "item_option_id")
     private Long id;
 

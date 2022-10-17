@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.delivery.domain.Delivery;
 import com.study.jpa.repeat.member.domain.Member;
@@ -24,11 +25,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@SequenceGenerator(name = "order_seq_gen", sequenceName = "order_seq")
 @Table(name = "orders")
 @Entity
 public class Order {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
     @Column(name = "order_id")
     private Long id;
 

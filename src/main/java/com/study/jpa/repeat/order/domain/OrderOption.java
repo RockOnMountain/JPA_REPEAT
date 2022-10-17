@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.study.jpa.repeat.common.BaseEntity;
 import com.study.jpa.repeat.item.domain.ItemOption;
@@ -16,11 +17,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@SequenceGenerator(name = "order_option_seq_gen", sequenceName = "order_option_seq")
 @Table(name = "order_option")
 @Entity
 public class OrderOption extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "order_option_seq_gen")
     @Column(name = "order_option_id")
     private Long id;
 
