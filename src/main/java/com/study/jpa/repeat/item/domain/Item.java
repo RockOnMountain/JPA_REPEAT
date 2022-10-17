@@ -27,4 +27,12 @@ public class Item extends BaseEntity {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<ItemOption> itemOptions = new ArrayList<>();
+
+    // 연관관계 메소드
+    public void addItemOption(ItemOption itemOption) {
+
+        this.itemOptions.add(itemOption);
+        itemOption.setItem(this);
+    }
+
 }
