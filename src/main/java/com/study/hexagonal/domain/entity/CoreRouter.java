@@ -11,14 +11,16 @@ import com.study.hexagonal.domain.vo.Location;
 import com.study.hexagonal.domain.vo.Model;
 import com.study.hexagonal.domain.vo.RouterType;
 import com.study.hexagonal.domain.vo.Vendor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class CoreRouter extends Router {
 
-    private Map<Id, Router> routers;
+    private final Map<Id, Router> routers;
 
 
+    @Builder
     public CoreRouter(Id id, Vendor vendor, Model model, IP ip, Location location, RouterType routerType,
             Map<Id, Router> routers) {
         super(id, vendor, model, ip, location, routerType);

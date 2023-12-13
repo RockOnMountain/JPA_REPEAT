@@ -9,8 +9,7 @@ public class EmptySwitchSpecification extends AbstractSpecification<EdgeRouter> 
 
     @Override
     public boolean isSatisfiedBy(EdgeRouter edgeRouter) {
-       // return CollectionUtils.isEmpty(edgeRouter.getSwitches());
-        return false;
+        return CollectionUtils.isEmpty(edgeRouter.getSwitches());
     }
 
 

@@ -21,8 +21,8 @@ public abstract class Router extends Equipment {
     }
 
 
-    public static Predicate<Router> getRouterTypePredicate(RouterType routerType) {
-        return router -> router.getRouterType().equals(routerType);
+    public static Predicate<Equipment> getRouterTypePredicate(RouterType routerType) {
+        return router -> ((Router) router).getRouterType().equals(routerType);
     }
 
 

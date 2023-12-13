@@ -12,17 +12,22 @@ import com.study.hexagonal.domain.vo.Model;
 import com.study.hexagonal.domain.vo.Network;
 import com.study.hexagonal.domain.vo.SwitchType;
 import com.study.hexagonal.domain.vo.Vendor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class Switch extends Equipment {
 
-    private SwitchType switchType;
-    private List<Network> switchNetworks;
+    private final SwitchType switchType;
+    private final List<Network> switchNetworks;
 
 
-    public Switch(Id id, Vendor vendor, Model model, IP ip, Location location) {
+    @Builder
+    public Switch(Id id, Vendor vendor, Model model, IP ip, Location location, SwitchType switchType,
+            List<Network> switchNetworks) {
         super(id, vendor, model, ip, location);
+        this.switchType = switchType;
+        this.switchNetworks = switchNetworks;
     }
 
 
