@@ -11,4 +11,6 @@ public class Switch extends Equipment {
     public Switch(Id id, Vendor vendor, Model model, IP ip, Location location) {
         super(id, vendor, model, ip, location);
     }
+
+    // test
 }
