@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.12'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.study.jpa'
@@ -24,6 +25,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// mysql
+	implementation 'mysql:mysql-connector-java'
+
 	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
@@ -34,8 +38,37 @@ dependencies {
 
 	// modelmapper
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
+
+	// querydsl
+	implementation("com.querydsl:querydsl-jpa")
+	implementation("com.querydsl:querydsl-apt")
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+def querydslSrcDir = "${buildDir}/main/generated"
+
+querydsl {
+	library = "com.querydsl:querydsl-apt"
+	jpa = true
+	querydslSourcesDir = querydslSrcDir
+}
+
+sourceSets {
+	main.java.srcDir querydslSrcDir
+}
+
+// querydsl 컴파일시 사용할 옵션 설정
+compileQuerydsl {
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+// querydsl 이 compileClassPath 를 상속하도록 설정
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
 }

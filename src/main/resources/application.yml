@@ -1,25 +1,26 @@
 spring:
+  config:
+    activate:
+      on-profile: mysql
   datasource:
-    url: jdbc:h2:tcp://localhost/~/jpaRepeat
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 1234
+      driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
         show_sql: true
 
-logging:
-  level:
-    org:
-      hibernate:
-        sql: debug
-        type:
-          descriptor:
-            sql: trace
-
-# https://zzang9ha.tistory.com/399
+  logging:
+    level:
+      org:
+        hibernate:
+          sql: debug
+          type:
+            descriptor:
+              sql: trace
